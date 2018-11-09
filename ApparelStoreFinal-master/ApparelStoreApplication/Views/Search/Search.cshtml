@@ -1,0 +1,72 @@
+﻿@using ApparelStoreWebService.Models.DB;
+@model SubCategory
+@{
+    ViewData["Title"] = "Search";
+}
+
+<h2>Search</h2>
+@{
+    SelectList list = (SelectList)ViewBag.categories;
+}
+<form asp-action="GetProducts" asp-controller="Search" method="post">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-5">
+            <div class="form-group">
+                <select class="form-control" asp-items="@list" id="selCategory" name="CategoryId">
+                    <option value="" selected disabled>--Select a Category--</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <select class="form-control" id="selSubCategory" name="SubCategoryId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-success" />
+            </div>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</form>
+@section Scripts
+    {
+    <script>
+        $(document).ready(function () {
+            //get the reference of category dropdown( html select element for category. #selCategory is the id. # is used to select element by ID)
+            // "change" function will be called when you select a category;
+            $('#selCategory').change(function () {
+                //$.ajax function is used to make ajax requests to the home controller and its actions
+                $.ajax({
+                    url: 'http://localhost:50821/SearchService/SubCategories/' + $('#selCategory').val(), //Home controller and GetSubCategories action
+                    type: 'GET',                            // we want to make a HTTPGET request
+                    success: function (data) {      // if request is successful function is called by ajax and you can access the subcategories through "data" input parameter of the function
+                        var opt;
+                        var subcat = $('#selSubCategory');
+                        subcat.empty();
+                        //create an option,make it [disabled],[select] it,value is nothing and text is '--Select a subcategory--'
+                        // for example <option disabled selected value=''>--Select a SubCategory--</option>
+                        opt = $('<option>');
+                        opt.attr('disabled', true);
+                        opt.attr('selected', true);
+                        opt.attr('value', '');
+                        opt.text('--Select a SubCategory--');
+                        //add this option of subcategory dropdown
+                        subcat.append(opt);
+
+                        //here we will programetically add the subcatories to the dropdown
+                        for (var i = 0; i < data.length; i++)// data is an array of subcategories objects.
+                        {
+                            opt = $('<option>');  //this is how we create an option in jquery
+                            opt.attr('value', data[i].subCategoryId);            // add option value
+                            opt.text(data[i].subCategoryName);                             //add option text
+                            subcat.append(opt);          //add option to subcategory dropdown
+                        }
+                    },
+                    error: function (e) {
+                        alert(e.toString());
+                    }
+                });
+
+            });
+        });
+    </script>
+}

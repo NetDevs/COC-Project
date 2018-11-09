@@ -1,0 +1,221 @@
+﻿@*@using ApparelStoreLibrary
+    @model UserDetails
+    @{
+        ViewData["Title"] = "Signup";
+    }
+
+
+
+    <style>
+    body {font-family: Arial, Helvetica, sans-serif;}
+    * {box-sizing: border-box}
+
+    /* Full-width input fields */
+        input[type=text]:focus, input[type=password]:focus, input[type=tel]:focus, input[type=email]:focus {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+        }
+
+        input[type=text]:focus, input[type=password]:focus, input[type=tel]:focus, input[type=email]:focus {
+            background-color: #ddd;
+            outline: none;
+        }
+
+    hr {
+        border: 1px solid #f1f1f1;
+        margin-bottom: 25px;
+    }
+
+    /* Set a style for all buttons */
+    button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        opacity: 0.9;
+    }
+
+    button:hover {
+        opacity:1;
+    }
+
+    /* Extra styles for the cancel button */
+    .cancelbtn {
+        padding: 14px 20px;
+        background-color: #f44336;
+    }
+
+    /* Float cancel and signup buttons and add an equal width */
+    .cancelbtn, .signupbtn {
+      float: left;
+      width: 50%;
+    }
+
+    /* Add padding to container elements */
+    .container {
+        padding: 16px;
+    }
+
+    /* Clear floats */
+    .clearfix::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    /* Change styles for cancel button and signup button on extra small screens */
+    media screen and (max-width: 300px) {
+        .cancelbtn, .signupbtn {
+           width: 100%;
+        }
+    }
+    </style>
+    <body>
+
+        <form asp-action="Signup" asp-controller="Admin" method="post">
+            <div class="container">
+                <h1>Sign Up with ClothNation</h1>
+                <p>Please fill in this form to create an account.</p>
+                <hr>
+
+
+                <label for="Name"><b>Name</b><t /><t /></label><br />
+
+                <t /><t /> <input type="text" placeholder="Enter Name" name="Name" required><br><br>
+
+                <label for="Phone"><b>PhoneNo</b></label><br />
+                <input type="tel" placeholder="Enter PhoneNo" name="Phone" required><br><br>
+
+                <label for="Address"><b>Address</b></label><br />
+                <input type="text" placeholder="Enter Address" name="Address" required><br><br>
+
+                <label for="Email"><b>Email</b></label><br />
+                <input type="email" placeholder="Enter Email" name="Email" required><br><br>
+
+                <label for="psw"><b>Password</b></label><br />
+                <input type="password" placeholder="Enter Password" name="Password" required><br><br>
+
+
+                <div class="clearfix">
+                    <button type="button" class="cancelbtn">Cancel</button>
+                    <button type="submit" class="signupbtn">Sign Up</button>
+                </div>
+            </div>
+        </form>
+
+    </body>*@
+@using ApparelStoreLibrary
+@model UserDetails
+@{
+    ViewData["Title"] = "Signup";
+}
+
+
+
+@*<style>
+    body {font-family: Arial, Helvetica, sans-serif;}
+    * {box-sizing: border-box}
+
+    /* Full-width input fields */
+        input[type=text]:focus, input[type=password]:focus, input[type=tel]:focus, input[type=email]:focus {
+            width: 100%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+        }
+
+        input[type=text]:focus, input[type=password]:focus, input[type=tel]:focus, input[type=email]:focus {
+            background-color: #ddd;
+            outline: none;
+        }
+
+    hr {
+        border: 1px solid #f1f1f1;
+        margin-bottom: 25px;
+    }
+
+    /* Set a style for all buttons */
+    button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        opacity: 0.9;
+    }
+
+    button:hover {
+        opacity:1;
+    }
+
+    /* Extra styles for the cancel button */
+    .cancelbtn {
+        padding: 14px 20px;
+        background-color: #f44336;
+    }
+
+    /* Float cancel and signup buttons and add an equal width */
+    .cancelbtn, .signupbtn {
+      float: left;
+      width: 50%;
+    }
+
+    /* Add padding to container elements */
+    .container {
+        padding: 16px;
+    }
+
+    /* Clear floats */
+    .clearfix::after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    /* Change styles for cancel button and signup button on extra small screens */
+    media screen and (max-width: 300px) {
+        .cancelbtn, .signupbtn {
+           width: 100%;
+        }
+    }
+    </style>*@
+<body style="background-color:dimgray">
+    <br /><br />
+    <h1 style="background-color:white"><b>Sign Up with ClothNation</b></h1>
+    <p style="background-color:white">Please fill in this form to create an account.</p>
+    <link href="~/css/SingnupStyle.css" rel="stylesheet" />
+    <div id="example2">
+        <div class="transbox">
+
+            @*<hr>*@
+            <form asp-action="Signup" asp-controller="Admin" method="post">
+                <label for="Name"><b>Name</b><t /><t /></label><br />
+                <t /><t /> <input type="text" placeholder="Enter Name" name="Name" required><br><br>
+                <label for="Phone"><b>PhoneNo</b></label><br />
+                <input type="tel" placeholder="Enter PhoneNo" name="Phone" required><br><br>
+                <label for="Address"><b>Address</b></label><br />
+                <input type="text" placeholder="Enter Address" name="Address" required><br><br>
+                <label for="Email"><b>Email</b></label><br />
+                <input type="email" placeholder="Enter Email" name="Email" required><br><br>
+                <label for="psw"><b>Password</b></label><br />
+                <input type="password" placeholder="Enter Password" name="Password" required><br><br>
+
+                <div class="clearfix">
+                    <button type="button" class="button button1">Cancel</button>
+                    <button type="submit" class="button button1">Sign Up</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>

@@ -1,0 +1,52 @@
+﻿@using ApparelStoreWebService.Models.DB;
+@model ProductViewModel
+@{
+    ViewData["Title"] = "GetProducts";
+}
+
+@{ 
+    List<ProductViewModel> Model = (List<ProductViewModel>)ViewBag.product;
+}
+
+
+
+    @*<div class="row">
+        <input type="submit" value="Submit"  class="btn btn-success"/>
+    </div>*@
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-5">
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    <form asp-action="AddToCart" asp-controller="Cart" method="post">
+
+                        <div>
+                            <label>@Model[i].Title</label> <input type="hidden" name="Title" value="@Model[i].Title" />
+                            <label>@Model[i].Price</label> <input type="hidden" name="Price" value="@Model[i].Price" />
+                            <label>@Model[i].Description</label> <input type="hidden" name="Description" value="@Model[i].Description" />
+                            <img src="@Model[i].ProductImage" /> <input type="hidden" name="ProductImage" value="@Model[i].ProductImage" />
+                            <input type="hidden" name="ProductId" value="@Model[i].ProductId" />
+
+                            <input type="hidden" name="Title" value="@Model[i].CategoryId" />
+                            <input type="hidden" name="Title" value="@Model[i].SubCategoryId" />
+                            <input type="submit" class="btn btn-success" value="AddToCart" />
+                        </div>
+                    </form>
+                }
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+                            <input type="submit" value="VIEW CART" class="btn-dark" onclick="@("window.location.href='" + @Url.Action("ViewCart", "Cart") + "'")" />
+
+                        </div>
+                    </div>
+                </div>
+                <div>
+                </div>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+
+
+
+

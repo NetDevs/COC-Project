@@ -1,0 +1,60 @@
+﻿#example2 {
+    background-image: url(https://www.downtowncf.com/sites/default/files/styles/banner_image/public/banners/sub-hdr-shopping_0.jpg?itok=Gox776oy);
+    background-position: center;
+    background-repeat: no-repeat, repeat;
+    background-size: inherit;
+    background-position: inherit;
+    padding: 1px;
+}
+
+div.transbox {
+    margin: 100px;
+    align-content: flex-start;
+    background-color: #ffffff;
+    border: 0px solid black;
+    opacity: 0.8;
+    filter: alpha(opacity=50); /* For IE8 and earlier */
+}
+
+    div.transbox form {
+        margin: 10%;
+        font-weight: bold;
+        color: #000000;
+    }
+
+.button {
+    background-color: white; /* Green */
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+.button1 {
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50;
+}
+
+.button2 {
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50;
+}
+
+.button1:hover {
+    background-color: dodgerblue;
+    color: white;
+}
+
+.button2:hover {
+    background-color: green;
+    color: white;
+}

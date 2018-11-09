@@ -1,0 +1,81 @@
+﻿@model IEnumerable<ApparelStoreApplication.Models.ProcessOrder>
+@{
+    ViewData["Title"] = "PlaceOrder";
+    var list = (List<ProcessOrder>)ViewData["products"];
+    
+}
+
+<h2>PlaceOrder</h2>
+
+<form asp-action="Payment" asp-controller="Cart" method="post">
+    <p>
+        <a asp-action="Create">View Cart</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.ProductId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Quantity)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.sum)
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in list)
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Quantity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.sum)
+                    </td>
+
+
+                </tr>
+
+
+            }
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td style="font-size:20px">Total</td>
+
+
+                    <td col-span="4" style="font-size:20px">
+                         @ViewData["Totalsum"]
+                    </td>
+                </tr>
+
+        </tbody>
+    </table>
+    <div>
+        <input type="submit" class="btn-dark" value="Proceed To Pay" />
+    </div>
+</form>

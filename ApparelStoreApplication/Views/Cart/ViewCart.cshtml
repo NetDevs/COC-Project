@@ -1,0 +1,68 @@
+﻿@model IEnumerable<ApparelStoreApplication.Models.ProductViewModelCart>
+
+@{
+    ViewData["Title"] = "ViewCart";
+    var list = (List<ProductViewModelCart>)ViewData["products"];
+
+
+}
+
+<h2>ViewCart</h2>
+
+<div class="container order">
+    <div class="row">
+        <div class="col-md-3 order">
+            ProductId
+
+        </div>
+        <div class="col-md-3 order">
+            ProductName
+
+        </div>
+        <div class="col-md-2 order">
+          Price
+
+        </div>
+        <div class="col-md-2 order">
+            Quantity
+        </div>
+        <div class="col-md-2 order">
+
+        </div>
+    </div>
+</div>
+
+<form asp-action="PlaceOrder" asp-controller="Cart" method="post">
+    @for (var i = 0; i < list.Count; i++)
+    {
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 order-div">@list[i].ProductId</div> <input type="hidden" name="[@i].ProductId" value="@list[i].ProductId" />
+                <div class="col-md-3 order-div">@list[i].Title</div> <input type="hidden" name="[@i].Title" value="@list[i].Title" />
+                <div class="col-md-2 order-div">@list[i].Price</div> <input type="hidden" name="[@i].Price" value="@list[i].Price" />
+
+                <div class="col-md-2 order">
+                    <select name="[@i].Quantity">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <div class="col-md-2 order">
+                    <button class="btn btn-danger" type="button" >
+                        Remove
+                    </button>
+                </div>
+
+
+
+            </div>
+        </div>
+
+    }
+    <div>
+        <input type="submit" class="btn-dark" value="Place Order" />
+    </div>
+</form>
