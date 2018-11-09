@@ -55,7 +55,7 @@ namespace ApparelStoreApplication.Controllers
                 obj.Price = i.Price;
                 obj.sum = (int)(i.Price * i.Quantity);
                 obj.Quantity = i.Quantity;
-                obj.Title = i.Title;
+                obj.Title = i.Title;                
                 //if(productList.Find(obj))
                 productList.Add(obj);
                 Totalsum += obj.sum;
@@ -66,10 +66,15 @@ namespace ApparelStoreApplication.Controllers
             return View();
         }
 
+        [HttpPost]
+        [HttpPost]
+        public IActionResult Payment(string optradio)
+        {
+           
 
-
-
-
+            return View();
+        }
+       
 
     }
  }

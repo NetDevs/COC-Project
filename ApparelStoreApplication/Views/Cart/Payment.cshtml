@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewData["Title"] = "Payment";
+}
+
+<h2></h2>
+<style>
+    checkbox{
+        transform:scale(2,2);
+    }
+</style>
+<link href="~/css/Payment.css" rel="stylesheet" />
+<h1 class="text-center heading">Payment</h1>
+<div class="container  ">
+    <div class="inner-container paymentBg">
+        <form method="post" asp-action="Payment" asp-controller="Cart">
+            <h2>Choose Payment Method</h2>
+            <div class="radio ">
+                <label><input type="radio" name="optradio" value="NB" > Net Banking</label>
+            </div>
+            <div class="radio ">
+                <label><input type="radio" name="optradio" value="DC">Debit Crads</label>
+            </div>
+            <div class="radio">
+                <label><input type="radio" name="optradio" value="CC">Cash on Delivery</label>
+            </div>
+            <button class="button" type="submit">
+                Continue
+            </button>
+        </form>
+
+    </div>
+</div>
