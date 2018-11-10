@@ -1,98 +1,99 @@
-﻿@*@using ApparelStoreLibrary
-    @model Credentials
-    @{
-        ViewData["Title"] = "Login";
-    }
-        <head>
-            <style>
-
-                .Account {
-                    background-color: tomato;
-                    color: white;
-                    padding: 10px;
-                }
-            </style>
-        </head>
-
-        <body style="background-color:white;">
-            <center>
-                <h1 style="color:black; font-size:500%; font-family:'Times New Roman', Times, serif; ">
-                    <centre><h1>CLOTH NATION</h1></centre><br>
-                </h1>
-
-
-
-                <form asp-action="Login" asp-controller="Admin" method="post" align="right">
-
-
-                    Login:<br>
-                    <input type="email" placeholder="Enter Email" name="Email" required>
-                    <br>
-                    Password:<br>
-                    <input type="password" placeholder="Enter Password" name="Password" required>
-                    <br />
-                    <input type="submit" value="Submit" />
-
-                    <br />
-
-                    <div asp-validation-summary="All"></div>
-                </form>
-                <button type="submit"><a href="http://localhost:50816/admin/signup">Create Account</a></button>
-            </center>
-        </body>*@
-@using ApparelStoreLibrary
+﻿@using ApparelStoreLibrary
 @model Credentials
 @{
     ViewData["Title"] = "Login";
 }
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-@*<link href="~/css/Style.css" rel="stylesheet" />
-    <body>
-        <div class="bg-image"> </div>
-        <center>
-            <h1 style="color:black; font-size:500%; font-family:'Times New Roman', Times, serif; ">
-                <centre><h1>CLOTH NATION</h1></centre><br>
-            </h1>
-            <div class="bg-text">
-                <form asp-action="Login" asp-controller="Admin" method="post" align="right">
+    <style>
+        body, html {
+            height: 100%;
+            font-family: Arial, Helvetica, sans-serif;
+        }
 
-                    <div id="example1">
-                    <div class="transbox">
+        * {
+            box-sizing: border-box;
+        }
 
-                        Login:<br>
-                        <input type="email" placeholder="Enter Email" name="Email" required>
-                        <br>
-                        Password:<br>
-                        <input type="password" placeholder="Enter Password" name="Password" required>
-                        <br />
-                        <input type="submit" value="Submit" />
-                        <br />
-                    </div>
+        .bg-img {
+            /* The image used */
+            background-image: url(http://www.jonnycakecenter.org/wp-content/uploads/2017/08/o-SHOPPING-BAGS-facebook.jpg);
+            min-height: 669px;
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+        }
 
-                    <div asp-validation-summary="All"></div>
-                </form>
-                <button type="submit"><a href="http://localhost:50816/admin/signup">Create Account</a></button>
-        </center>
-    </body>*@
-<link href="~/css/LoginStyle.css" rel="stylesheet" />
+        /* Add styles to the form container */
+        .contain {
+            position: absolute;
+            left: 370px;
+            top: 140px;
+            right: 0;
+            margin: 20px;
+            max-width: 300px;
+            padding: 16px;
+            background-color: white;
+        }
+
+        /* Full-width input fields */
+        input[type=email], input[type=password] {
+            width: 100%;
+            padding: 15px;
+            margin: 0px 0 0px 0;
+            border: none;
+            background: #f1f1f1;
+        }
+
+            input[type=email]:focus, input[type=password]:focus {
+                background-color: #ddd;
+                outline: none;
+            }
+
+        /* Set a style for the submit button */
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 16px 20px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.9;
+        }
+
+            .btn:hover {
+                opacity: 1;
+            }
+    </style>
+</head>
 
 <body>
-    <center> <h2 style="color:Purple; font-size:500%; font-family:'Times New Roman'"><b>CLOTH-NATION</b></h2></center>
+    <br />
+    <br />
+  
+  
+   
+    <h1>ApparelStore</h1>
+    @*<link href="~/css/LoginStyle.css" rel="stylesheet" />*@
+    <div class="bg-img">
 
-    <div id="example1" height="100%">
-        <div class="transbox">
-
+        <div class="contain">
             <form asp-action="Login" asp-controller="Admin" method="post" align="center">
-                <b>
-                    <h2 style="color:darkblue"> <b>Login:</b></h2>
-                    <input type="email" placeholder="Enter Email" name="Email" required>
-                    <br>
-                    <h2 style="color:darkslategray"><b>Password:</b></h2>
-                    <input type="password" placeholder="Enter Password" name="Password" required>
-                    <br><br />
-                    <button class="button button1">Submit</button>
-                    <div asp-validation-summary="All"></div>
-                    <button class="button button1"><a href="http://localhost:50816/admin/signup">Create Account</a></button>
+
+                <h3>Please Sign In</h3>
+                <label for="email"><b></b></label>
+                <input type="email" placeholder="Enter Email" name="Email" required>
+                <label for="Password"><b></b></label>
+                <input type="password" placeholder="Enter Password" name="Password" required>
+                <br />
+                <br />
+                <button type="submit" class="btn">Login</button>
+                <div asp-validation-summary="All"></div>
+                <a href="http://localhost:50816/admin/signup">Create Account</a>
+                @*<button class="btn"><a href="http://localhost:50816/admin/signup">Create Account</a></button>*@
 
             </form>
         </div>
