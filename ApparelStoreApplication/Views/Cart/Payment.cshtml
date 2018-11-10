@@ -20,24 +20,37 @@
     <div class="container">
         <link href="~/css/Payment.css" rel="stylesheet" />
 
-        <h1 class="text-center heading">Payment</h1>
+        <h1 class="text-center heading"><b>Payment</b></h1>
+        <h1 ><b>Choose Payment Mode</b></h1>
+
+        <div class="radio ">
+            <label><input type="radio" name="optradio" value="CC">Credit Crad</label>
+        </div>
+        <div class="radio ">
+            <label><input type="radio" name="optradio" value="DC">Debit Crad</label>
+        </div>
+        <div class="radio">
+            <label><input type="radio" name="optradio" value="COD">Cash on Delivery</label>
+        </div>
+        <button class="button" type="submit">
+            Continue
+        </button>
         <div class="container  ">
             <div class="inner-container paymentBg" id="paydiv">
                 <form method="post" asp-action="Payment" asp-controller="Cart">
-                    <h2>Choose Payment Method</h2>
-
+                 
                     @*<div class="panel-group" id="accordion">
-                        <div class="panel panel-default">
-                            <div class="panel-heading">
-                                <h4 class="panel-title">*@
-                    @*<a data-toggle="collapse" data-parent="#accordion" href="#collapse1">*@<label>Debit Cards</label>@*</a>*@
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">*@
+                    @*<a data-toggle="collapse" data-parent="#accordion" href="#collapse1">*@<label></label>@*</a>*@
                     @*</h4>
-                        </div>
-                        <div id="collapse1" class="panel-collapse collapse in">
-                            <div class="panel-body">*@
-                    <div class="creditCardForm">
+                    </div>
+                    <div id="collapse1" class="panel-collapse collapse in">
+                        <div class="panel-body">*@
+                    <div class="debitCardForm">
                         <div class="heading">
-                            <h3><b>Enter Card Details</b></h3>
+                            <h3><b>Enter the  Debit Card Details</b></h3>
                         </div>
                         <div class="payment">
                             <form>
@@ -76,7 +89,7 @@
                                         <option value="21"> 2021</option>
                                     </select>
                                 </div>
-                                <div class="form-group" id="credit_cards">
+                                <div class="form-group" id="debit_cards">
                                     <img src="https://demo.tutorialzine.com/2016/11/simple-credit-card-validation-form/assets/images/visa.jpg" id="visa">
                                     <img src="https://demo.tutorialzine.com/2016/11/simple-credit-card-validation-form/assets/images/mastercard.jpg" id="mastercard">
 
@@ -89,33 +102,87 @@
                     </div>
             </div>
         </div>
-    </div>
-    </div>
-    <div id="ccdiv"><h2>Credit Card</h2></div>
-    <div class="radio ">
-        <label><input type="radio" name="optradio" value="DC">Debit Crads</label>
-    </div>
-    <div class="radio">
-        <label><input type="radio" name="optradio" value="CC">Cash on Delivery</label>
-    </div>
-    <button class="button" type="submit">
-        Continue
-    </button>
+        <div class="CreditCard" id="ccdiv">
+            <div class="creditCardForm">
+                <div class="heading">
+                    <h3><b>Enter the Credit Card Details</b></h3>
+                </div>
+                <div class="payment">
+                    <form>
+                        <div class="form-group owner">
+                            <label for="owner">Owner</label>
+                            <input type="text" class="form-control" id="owner">
+                        </div>
+                        <div class="form-group CVV">
+                            <label for="cvv">CVV</label>
+                            <input type="text" class="form-control" id="cvv">
+                        </div>
+                        <div class="form-group" id="card-number-field">
+                            <label for="cardNumber">Card Number</label>
+                            <input type="text" class="form-control" id="cardNumber">
+                        </div>
+                        <div class="form-group" id="expiration-date">
+                            <label>Expiration Date</label>
+                            <select>
+                                <option value="01">January</option>
+                                <option value="02">February </option>
+                                <option value="03">March</option>
+                                <option value="04">April</option>
+                                <option value="05">May</option>
+                                <option value="06">June</option>
+                                <option value="07">July</option>
+                                <option value="08">August</option>
+                                <option value="09">September</option>
+                                <option value="10">October</option>
+                                <option value="11">November</option>
+                                <option value="12">December</option>
+                            </select>
+                            <select>
+                                <option value="18"> 2018</option>
+                                <option value="19"> 2019</option>
+                                <option value="20"> 2020</option>
+                                <option value="21"> 2021</option>
+                            </select>
+                        </div>
+                        <div class="form-group" id="debit_cards">
+                            <img src="https://demo.tutorialzine.com/2016/11/simple-credit-card-validation-form/assets/images/visa.jpg" id="visa">
+                            <img src="https://demo.tutorialzine.com/2016/11/simple-credit-card-validation-form/assets/images/mastercard.jpg" id="mastercard">
+
+                        </div>
+                        <div class="form-group" id="pay-now">
+                            <button type="submit" class="btn btn-default" id="confirm-purchase">Confirm</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+ </div>
+        <div id="cod">Cash on delivery</div>
     </form>
     </div>
     </div>
+
     <script>
+        $('#paydiv').hide();
+        $('#cod').hide();
+        $('#ccdiv').hide();
         $('input[type=radio]').change(function (e) {
 
             if ($(e.target).val() == "DC") {
                 $('#paydiv').show();
                 $('#ccdiv').hide();
+                $('#cod').hide();
             }
-            else {
+            else if ($(e.target).val() == "CC") {
                 $('#ccdiv').show();
                 $('#paydiv').hide();
+                $('#cod').hide();
+            }
+            else  {
+                $('#ccdiv').hide();
+                $('#paydiv').hide();
+                $('#cod').show();
             }
         });
-        //comment fior tst
+                
     </script>
-    </body>
+</body>
