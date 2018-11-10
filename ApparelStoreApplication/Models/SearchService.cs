@@ -71,27 +71,55 @@ namespace ApparelStoreApplication.Models
             }
 
         }
+        public void RemoveFromCart(int id)
+        {
+                string json = "";
+                byte[] ary;
+                bool isavailable = context.Session.TryGetValue("Cart", out ary);
+                json = context.Session.GetString("Cart");
+                //serializedObjects = JsonConvert.DeserializeObject<List<ProductViewModelCart>>(json);
+                List<ProductViewModelCart> list = JsonConvert.DeserializeObject<List<ProductViewModelCart>>(json);
+
+                List<ProductViewModelCart> result = (from c in list
+                                                     select new ProductViewModelCart()
+                                                     {
+                                                         CategoryId = c.CategoryId,
+                                                         Price = c.Price,
+                                                         ProductId = c.ProductId,
+                                                         Quantity = c.Quantity,
+                                                         SubCategoryId = c.SubCategoryId,
+                                                         Title = c.Title,
+                                                         ProductImage=c.ProductImage
+                                                     }).ToList();
+                var item = result.SingleOrDefault(x => x.ProductId == id);
+                if (item != null)
+                    result.Remove(item);
+                string updatedList = JsonConvert.SerializeObject(result);
+                context.Session.SetString("Cart", updatedList);
+
+         
+
+
+
+        }
         public List<ProductViewModelCart> ProductCart()
         {
-            // List<ProductViewModelCart> serializedObjects;
             string json = "";
             byte[] ary;
             bool isavailable = context.Session.TryGetValue("Cart", out ary);
             json = context.Session.GetString("Cart");
-            //serializedObjects = JsonConvert.DeserializeObject<List<ProductViewModelCart>>(json);
             List<ProductViewModelCart> list = JsonConvert.DeserializeObject<List<ProductViewModelCart>>(json);
-
             List<ProductViewModelCart> result = (from c in list
                                                  select new ProductViewModelCart()
                                                  {
                                                      CategoryId = c.CategoryId,
+                                                     ProductImage=c.ProductImage,
                                                      Price = c.Price,
                                                      ProductId = c.ProductId,
                                                      Quantity = c.Quantity,
                                                      SubCategoryId = c.SubCategoryId,
                                                      Title = c.Title
                                                  }).ToList();
-
             return result.Distinct().ToList();
         }
     }

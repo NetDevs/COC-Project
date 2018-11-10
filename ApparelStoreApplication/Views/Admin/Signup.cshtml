@@ -200,6 +200,7 @@
 
             @*<hr>*@
             <form asp-action="Signup" asp-controller="Admin" method="post">
+
                 <label for="Name"><b>Name</b><t /><t /></label><br />
                 <t /><t /> <input type="text" placeholder="Enter Name" name="Name" required><br><br>
                 <label for="Phone"><b>PhoneNo</b></label><br />
@@ -210,6 +211,7 @@
                 <input type="email" placeholder="Enter Email" name="Email" required><br><br>
                 <label for="psw"><b>Password</b></label><br />
                 <input type="password" placeholder="Enter Password" name="Password" required><br><br>
+                <div asp-validation-summary="All" class="text-danger"></div>
 
                 <div class="clearfix">
                     <button type="button" class="button button1">Cancel</button>
@@ -217,5 +219,6 @@
                 </div>
             </form>
         </div>
+
     </div>
 </body>

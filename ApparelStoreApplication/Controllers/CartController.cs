@@ -18,10 +18,7 @@ namespace ApparelStoreApplication.Controllers
         {
             service = new SearchService();
         }
-        //public IActionResult Index()
-        //{
-        //    return View();
-        //}
+       
         [HttpPost][HttpGet]
         public IActionResult AddToCart(ProductViewModel Model)
         {
@@ -31,6 +28,15 @@ namespace ApparelStoreApplication.Controllers
             SubCategory subcategory = JsonConvert.DeserializeObject<SubCategory>(json);
             return RedirectToAction("GetProducts", "Search",subcategory);
         }
+        [HttpPost]
+        [HttpGet]
+        public IActionResult RemoveFromCart(int id)
+        {
+            service.context = HttpContext;
+            service.RemoveFromCart(id);
+            return RedirectToAction("ViewCart","Cart");
+        }
+
         [HttpGet]
         public IActionResult ViewCart()
         {
@@ -41,8 +47,8 @@ namespace ApparelStoreApplication.Controllers
             return View(result);
         }
 
-        [HttpPost]
 
+        [HttpPost]
         public IActionResult PlaceOrder(ProductViewModelCart[] p)
         {
 
@@ -60,7 +66,6 @@ namespace ApparelStoreApplication.Controllers
                 productList.Add(obj);
                 Totalsum += obj.sum;
                 ViewData["Totalsum"] = Totalsum;
-
             }
             ViewData["products"] = productList;
             return View();
@@ -70,12 +75,8 @@ namespace ApparelStoreApplication.Controllers
         [HttpPost]
         public IActionResult Payment(string optradio)
         {
-           
-
             return View();
         }
-       
-
     }
  }
 

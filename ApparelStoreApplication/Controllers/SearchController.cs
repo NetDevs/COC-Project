@@ -24,6 +24,7 @@ namespace ApparelStoreApplication.Controllers
         }
         public IActionResult Search()
         {
+            HttpContext.Session.Remove("CatSubCat");
             var result=service.GetCategories();
             SelectList list = new SelectList(result, "CategoryId", "CategoryName");
             ViewBag.categories = list;
