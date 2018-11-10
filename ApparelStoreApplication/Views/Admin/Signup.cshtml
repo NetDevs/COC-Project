@@ -190,16 +190,19 @@
         }
     }
     </style>*@
-<body style="background-color:dimgray">
+<body>
     <br /><br />
-    <h1 style="background-color:white"><b>Sign Up with ClothNation</b></h1>
-    <p style="background-color:white">Please fill in this form to create an account.</p>
+    <h2 style="background-color:white"><b>Please Enter Your details...</b></h2>
+
     <link href="~/css/SingnupStyle.css" rel="stylesheet" />
     <div id="example2">
+        
         <div class="transbox">
 
             @*<hr>*@
             <form asp-action="Signup" asp-controller="Admin" method="post">
+                <br /> 
+                <br />
                 <label for="Name"><b>Name</b><t /><t /></label><br />
                 <t /><t /> <input type="text" placeholder="Enter Name" name="Name" required><br><br>
                 <label for="Phone"><b>PhoneNo</b></label><br />
@@ -211,10 +214,14 @@
                 <label for="psw"><b>Password</b></label><br />
                 <input type="password" placeholder="Enter Password" name="Password" required><br><br>
 
-                <div class="clearfix">
-                    <button type="button" class="button button1">Cancel</button>
-                    <button type="submit" class="button button1">Sign Up</button>
-                </div>
+                                                                                                 <div class="clearfix">
+                                                                                                     <button type="submit" class="btn btn-success">Sign Up</button>&nbsp; &nbsp;
+                                                                                                     <button type="button" class="btn btn-danger" onsubmit="http://localhost:50816/admin/login">Cancel</button>
+
+
+                                                                                                     @*<br />
+        <br />*@
+                                                                                                 </div>
             </form>
         </div>
     </div>
