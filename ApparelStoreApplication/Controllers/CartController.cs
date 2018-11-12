@@ -31,6 +31,14 @@ namespace ApparelStoreApplication.Controllers
             SubCategory subcategory = JsonConvert.DeserializeObject<SubCategory>(json);
             return RedirectToAction("GetProducts", "Search",subcategory);
         }
+        [HttpPost]
+        [HttpGet]
+        public IActionResult RemoveFromCart(int id)
+        {
+            service.context = HttpContext;
+            service.RemoveFromCart(id);
+            return RedirectToAction("ViewCart", "Cart");
+        }
         [HttpGet]
         public IActionResult ViewCart()
         {
