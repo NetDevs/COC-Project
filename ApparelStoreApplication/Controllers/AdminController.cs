@@ -58,7 +58,7 @@ namespace ApparelStoreApplication.Controllers
                 if (result == "Duplicate Email")
                 {
                     ModelState.AddModelError("Email", "User Already Exists");
-                    return RedirectToAction("Login", "Admin");
+                    return View("Signup",userdetails);
                 }
 
 
