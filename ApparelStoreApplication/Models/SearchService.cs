@@ -113,13 +113,14 @@ namespace ApparelStoreApplication.Models
             List<ProductViewModelCart> result = (from c in list
                                                  select new ProductViewModelCart()
                                                  {
+                                                     Title = c.Title,
                                                      CategoryId = c.CategoryId,
                                                      ProductImage=c.ProductImage,
                                                      Price = c.Price,
                                                      ProductId = c.ProductId,
                                                      Quantity = c.Quantity,
                                                      SubCategoryId = c.SubCategoryId,
-                                                     Title = c.Title
+                                                     
                                                  }).ToList();
             return result.Distinct().ToList();
         }
