@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -74,7 +74,15 @@ namespace ApparelStoreApplication.Controllers
 
             return View();
         }
-       
+       [HttpPost]
+       [HttpGet]
+       public IActionResult Details()
+        {
+
+            return View();
+
+
+        }
 
     }
  }

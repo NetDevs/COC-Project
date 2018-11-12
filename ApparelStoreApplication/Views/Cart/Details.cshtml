@@ -1,0 +1,35 @@
+﻿
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2><b>Please Enter the Details</b></h2>
+
+<form asp-action="Payment" asp-controller="Cart" method="post">
+
+    <body>
+        <br /><br />
+
+
+
+
+
+        <label for="Name"><b>Name</b><t /><t /></label><br />
+        <t /><t /> <input type="text" placeholder="Enter Name" name="Name" required><br><br>
+        <label for="Phone"><b>PhoneNo</b></label><br />
+        <input type="tel" placeholder="Enter PhoneNo" name="Phone" required><br><br>
+        <label for="Address"><b>Address</b></label><br />
+        <input type="text" placeholder="Enter Address" name="Address" required><br><br>
+        <label for="Email"><b>Email</b></label><br />
+        <input type="email" placeholder="Enter Email" name="Email" required><br><br>
+
+        <div>
+            <input type="submit" class="btn-dark" value="Submit" />
+        </div>
+
+
+        </div>
+        </div>
+    </body>
+
+</form>
