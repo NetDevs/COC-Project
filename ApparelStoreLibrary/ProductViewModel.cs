@@ -47,6 +47,7 @@ namespace ApparelStoreApplication.Models
         public List<ProcessOrder> products { get; set; }
         public int CustomerId { get; set; }
         public string PaymentMode { get; set; }
+        //comment
 
     }
 }
