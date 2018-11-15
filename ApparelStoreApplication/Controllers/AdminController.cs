@@ -31,6 +31,7 @@ namespace ApparelStoreApplication.Controllers
         [HttpPost]
         public IActionResult Login(Credentials credentials)
         {
+            service.context = HttpContext;
            log.LogInformation("Executing Login Method");
                 int result = service.Login(credentials);
                 if(result==0)

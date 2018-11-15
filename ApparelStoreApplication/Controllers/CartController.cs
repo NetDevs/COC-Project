@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ApparelStoreApplication.Models;
+using ApparelStoreWebService.Models;
 using ApparelStoreWebService.Models.DB;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -13,10 +14,10 @@ namespace ApparelStoreApplication.Controllers
 {
     public class CartController : Controller
     {
-        SearchService service;
+        ApparelStoreApplication.Models.SearchService service;
         public CartController()
         {
-            service = new SearchService();
+            service = new ApparelStoreApplication.Models.SearchService();
         }
         //public IActionResult Index()
         //{
@@ -55,6 +56,9 @@ namespace ApparelStoreApplication.Controllers
         {
 
             List<ProcessOrder> productList = new List<ProcessOrder>();
+            HttpContext.Session.Remove("Cart");
+            string json = JsonConvert.SerializeObject(p);
+            HttpContext.Session.SetString("Cart", json);
             int Totalsum=0;
             foreach (var i in p)
             {
@@ -75,18 +79,26 @@ namespace ApparelStoreApplication.Controllers
         }
 
         [HttpPost]
-        [HttpPost]
         public IActionResult Payment(string optradio)
         {
-           
+            InvoiceDetails data;
+            if (optradio != null)
+            {
+                ApparelStoreApplication.Models.BookingService svc = new ApparelStoreApplication.Models.BookingService();
+                svc.context = HttpContext;
+                FinalOrder details=svc.PlaceOrder(optradio,out data);
 
+                ViewData["details"] = details;
+                ViewData["invoice"] = data;
+                return View("Invoice");
+            }
             return View();
         }
        [HttpPost]
        [HttpGet]
        public IActionResult Details()
         {
-
+            
             return View();
 
 

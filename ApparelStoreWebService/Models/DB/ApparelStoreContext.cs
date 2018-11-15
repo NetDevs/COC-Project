@@ -30,7 +30,7 @@ namespace ApparelStoreWebService.Models.DB
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("server=TRD-517;database=ApparelStore;trusted_connection=yes");
+                optionsBuilder.UseSqlServer("server=localhost;database=ApparelStore;trusted_connection=yes");
             }
         }
 
@@ -105,7 +105,7 @@ namespace ApparelStoreWebService.Models.DB
                 entity.Property(e => e.Price).HasColumnType("money");
 
                 entity.Property(e => e.ProductImage)
-                    .HasMaxLength(50)
+                    .HasColumnName("productImage")
                     .IsUnicode(false);
 
                 entity.Property(e => e.Title)
@@ -163,10 +163,6 @@ namespace ApparelStoreWebService.Models.DB
 
             modelBuilder.Entity<SubCategory>(entity =>
             {
-                entity.HasKey(e => new { e.CategoryId, e.SubCategoryId });
-
-                entity.Property(e => e.SubCategoryId).ValueGeneratedOnAdd();
-
                 entity.Property(e => e.SubCategoryName)
                     .HasMaxLength(20)
                     .IsUnicode(false);

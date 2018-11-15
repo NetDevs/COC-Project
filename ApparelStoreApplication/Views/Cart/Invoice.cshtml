@@ -1,0 +1,130 @@
+﻿@using ApparelStoreWebService.Models;
+@using ApparelStoreLibrary;
+@using ApparelStoreApplication.Controllers;
+@{
+    ViewData["Title"] = "Invoice";
+    FinalOrder final = (FinalOrder)ViewData["details"];
+    InvoiceDetails details = (InvoiceDetails)ViewData["invoice"];
+}
+
+
+@{
+    Layout = null;
+}
+<html>
+<head>
+    <style>
+        body {
+            background: grey;
+            margin-top: 80px;
+            margin-bottom: 80px;
+            padding: 20px 20px 20px 20px;
+        }
+    </style>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="card">
+                        <div class="card-body p-0">
+                            <div class="row p-1">
+                                <div class="col-md-6">
+                                    <img src="data:image/png;base64,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">
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <p class="font-weight-bold mb-1">Invoice No. @details.InvoiceNo</p>
+                                    <p class="text-muted">@DateTime.Now.ToLongDateString()</p>
+                                </div>
+                            </div>
+                            <hr class="my-5">
+                            <div class="row pb-4 p-5" style="padding:10px 10px 10px 10px">
+                                <div class="col-md-6">
+                                    
+                                        <p class="font-weight-bold mb-4">CLIENT INFORMATION</p>
+                                        <p class="mb-2">Name : @details.customer.Name</p>
+                                        <p class="mb-2">Address : @details.customer.Address</p>
+                                        <p class="mb-2">EmailId : @details.customer.Email</p>
+                                        <p class="mb-2">Contact No. : @details.customer.Phone</p>
+                                    
+
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <p class="font-weight-bold mb-4">Payment Details</p>
+                                    <p class="mb-4"><span class="text-muted">Payment Type: @final.PaymentMode </span></p>
+                                     
+            
+        
+                                    
+                                    
+                                    
+                                        <p class="mb-4"><span class="text-muted">Name: </span> @details.customer.Name</p>
+                                    
+                                </div>
+                            </div>
+                            <div class="row p-5">
+                                <div class="col-md-12 card">
+                                    <table class="table-responsive table-striped table-condensed">
+                                        <thead>
+                                            <tr>
+                                                <th class="border-0 text-uppercase small font-weight-bold">Item</th>
+                                                <th class="border-0 text-uppercase small font-weight-bold">Unit Cost</th>
+                                                <th class="border-0 text-uppercase small font-weight-bold">Quantity</th>
+                                                <th class="border-0 text-uppercase small font-weight-bold">Total</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @for(int i=0;i<final.products.Count;i++)
+                                            {
+                                                <tr>
+                                                    <td>@final.products[i].Title</td>
+                                                    <td class="text-center">@final.products[i].Price</td>
+                                                    <td class="text-center">@final.products[i].Quantity</td>
+                                                    <td class="text-right">@string.Format("{0}", @final.products[i].Quantity * @final.products[i].Price)</td>
+                                                </tr>
+                                            }
+
+                                            <tr>
+                                                @{
+
+                                                    int sum = 0;
+                                                    for (int i = 0; i < final.products.Count; i++)
+                                                    {
+                                                        sum += final.products[i].Quantity * final.products[i].Price;
+
+                                                    }
+                                                    <td class="no-line"></td>
+                                                    <td class="no-line"></td>
+                                                    <td class="no-line text-center"><strong>Total</strong></td>
+                                                    <td class="no-line text-right">@sum</td>
+                                                }
+
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-row-reverse bg-dark text-white p-4">
+                                <div class="py-3 px-5 text-right">
+                                    <div class="mb-2"><h1>Grand Total</h1></div>
+                                    <h2 class="h2 font-weight-light">@sum</h2>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="text-light mt-5 mb-5 text-center small">by : <a class="text-light" target="_blank" href="http://totoprayogo.com">totoprayogo.com</a></div>
+    </div>
+
+</body>
+</html>

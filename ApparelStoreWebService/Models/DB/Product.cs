@@ -18,8 +18,8 @@ namespace ApparelStoreWebService.Models.DB
         public int? SubCategoryId { get; set; }
         public int? Quantity { get; set; }
         public int? ReorderLevel { get; set; }
-        public string ProductImage { get; set; }
         public string Description { get; set; }
+        public string ProductImage { get; set; }
 
         public Category Category { get; set; }
         public ICollection<ProductOrderDetails> ProductOrderDetails { get; set; }

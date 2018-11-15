@@ -42,4 +42,11 @@ namespace ApparelStoreApplication.Models
     {
         public int sum { get; set; }
     }
+   public class FinalOrder
+    {
+        public List<ProcessOrder> products { get; set; }
+        public int CustomerId { get; set; }
+        public string PaymentMode { get; set; }
+
+    }
 }

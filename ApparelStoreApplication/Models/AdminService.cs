@@ -1,4 +1,5 @@
 ﻿using ApparelStoreLibrary;
+using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ namespace ApparelStoreApplication.Models
 {
     public class AdminService
     {
+       public HttpContext context;
         HttpClient client;
         public AdminService()
         {
@@ -27,7 +29,11 @@ namespace ApparelStoreApplication.Models
             {
                 return 0;
             }
-            return 1;
+            else
+            {
+                context.Session.SetInt32("CustomerId", Convert.ToInt32(response.Content.ReadAsStringAsync().Result));
+                return 1;
+            }
         }
         public string Signup(UserDetails userdetails)
         {
