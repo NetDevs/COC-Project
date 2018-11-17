@@ -22,33 +22,33 @@ namespace ApparelStoreApplication.Controllers
         }
 
 
-        
+
         public IActionResult Login()
         {
             return View();
         }
-       [ErrorFilter]
+        [ErrorFilter]
         [HttpPost]
         public IActionResult Login(Credentials credentials)
         {
             service.context = HttpContext;
-           log.LogInformation("Executing Login Method");
-                int result = service.Login(credentials);
-                if(result==0)
-                {
-                    ModelState.AddModelError("Email", "Invalid Uid Password");
-                    return View("Login", credentials);
-                }
-          
-            return RedirectToAction("Search","Search");
+            log.LogInformation("Executing Login Method");
+            int result = service.Login(credentials);
+            if (result == 0)
+            {
+                ModelState.AddModelError("Email", "Invalid Uid Password");
+                return View("Login", credentials);
+            }
+
+            return RedirectToAction("Search", "Search");
         }
         [ErrorFilter]
         [HttpGet]
         public IActionResult Signup()
         {
-           return View();
+            return View();
         }
-       
+
         [HttpPost]
         public IActionResult Signup(UserDetails userdetails)
         {
@@ -59,17 +59,23 @@ namespace ApparelStoreApplication.Controllers
                 if (result == "Duplicate Email")
                 {
                     ModelState.AddModelError("Email", "User Already Exists");
-                    return View("Signup",userdetails);
+                    return View("Signup", userdetails);
                 }
 
 
                 return RedirectToAction("Login", "admin");
             }
-            catch(Exception e)
+            catch (Exception e)
             {
-                ErrorViewModel model = new ErrorViewModel() { RequestId=e.Message };
+                ErrorViewModel model = new ErrorViewModel() { RequestId = e.Message };
                 return View("Error", model);
             }
+
+        }
+        public IActionResult LogOut()
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Login", "Admin");
         }
     }
 }
