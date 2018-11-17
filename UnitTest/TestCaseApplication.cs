@@ -50,6 +50,35 @@ namespace ApparelStoreUnitTest
             var result = (ViewResult)controllers.Login(credentials);
             Assert.AreEqual("Login", result.ViewName);
         }
+        [TestMethod]
+        public void EmptyDetails()
+        {
+            Credentials credentials = new Credentials() { Email = "", Password = "" };
+            var result = (ViewResult)controllers.Login(credentials);
+            Assert.AreEqual("Login", result.ViewName);
+        }
+        [TestMethod]
+        public void EmptyPassword()
+        {
+            Credentials credentials = new Credentials() { Email = "Ajay@gmail.com", Password = "" };
+            var result = (ViewResult)controllers.Login(credentials);
+            Assert.AreEqual("Login", result.ViewName);
+        }
+        [TestMethod]
+        public void EmptyEmail()
+        {
+            Credentials credentials = new Credentials() { Email = " ", Password = "1234" };
+            var result = (ViewResult)controllers.Login(credentials);
+            Assert.AreEqual("Login", result.ViewName);
+        }
+        [TestMethod]
+        public void AddToCart()
+        {
+            Credentials credentials = new Credentials() { Email = " ", Password = "1234" };
+            var result = (ViewResult)controllers.Login(credentials);
+            Assert.AreEqual("Login", result.ViewName);
+        }
+
 
     }
 }
