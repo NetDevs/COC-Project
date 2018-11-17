@@ -77,7 +77,7 @@ namespace ApparelStoreApplication.Controllers
             ViewData["products"] = productList;
             return View();
         }
-
+        [HttpGet]
         [HttpPost]
         public IActionResult Payment(string optradio)
         {
