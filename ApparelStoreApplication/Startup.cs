@@ -58,7 +58,8 @@ namespace ApparelStoreApplication
             {
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Admin}/{action=Login}/{id?}");
+                    //template: "{controller=Admin}/{action=Login}/{id?}");
+                    template: "{controller=Home}/{action=Index}");
             });
         }
     }

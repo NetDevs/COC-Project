@@ -121,10 +121,10 @@
             var val = $('input[type=radio]:checked').val();
             if ($('#owner').val() == 0 || $('#owner').val().length < 5)
                 alert('Please Check name');
-            else if ($('#cvv').val().length < 3 || $('#cvv').val() == "")
+            else if ($('#cvv').val().length != 3 || $('#cvv').val() == "")
                 alert('Please check cvv');
-            else if ($('#cardnumber').val().length < 16 || $('#cardnumber').val() == "")
-                alert('Please check cvv');
+            else if ($('#cardnumber').val().length != 16 || $('#cardnumber').val() == "")
+                alert('Please check cardnumber');
         else
             {
                 window.location.href = '/Cart/Payment?optradio=' + val;
